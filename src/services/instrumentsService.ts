@@ -1,6 +1,9 @@
 import apiClient from '../api/axiosInstance';
+import { Instrument } from '../types/instruments';
 
 export const getInstruments = async () => {
-  const response = await apiClient.get('/instruments');
+  const url = '/instruments';
+
+  const response = await apiClient.get<Instrument[]>(url);
   return response.data;
 };
