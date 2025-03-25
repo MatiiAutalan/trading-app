@@ -1,4 +1,4 @@
-import apiClient from '../api/axiosInstance';
+import { apiClient } from '@api';
 
 export type OrderData = {
   instrument_id: number;

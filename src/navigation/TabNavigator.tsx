@@ -1,8 +1,8 @@
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { Ionicons } from '@expo/vector-icons';
-import InstrumentsScreen from '../screens/Instruments/InstrumentsScreen';
-import PortfolioScreen from '../screens/Portfolio/PortfolioScreen';
-import SearchScreen from '../screens/Search/SearchScreen';
+import { InstrumentsScreen } from '@screens';
+import { PortfolioScreen } from '@screens';
+import { SearchScreen } from '@screens';
 
 const Tab = createBottomTabNavigator();
 

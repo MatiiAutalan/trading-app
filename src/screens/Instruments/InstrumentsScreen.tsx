@@ -1,12 +1,10 @@
 import React, { useEffect, useState } from 'react';
 import { View, Text, FlatList } from 'react-native';
-import { getInstruments } from '../../services/instrumentsService';
-import { Instrument } from '../../types/instruments';
-import InstrumentItem from '../../components/InstrumentItem/InstrumentItem';
-import OrderModal from '../../components/CreateOrderModal/CreateOrderModal';
-import Loader from '../../components/Loader/Loader';
+import { getInstruments } from '@services';
+import { Instrument } from '@types';
+import { InstrumentItem, OrderModal, Loader } from '@components';
+import { useOrderModal } from '@hooks';
 import styles from './InstrumentsStyles';
-import useOrderModal from '../../hooks/useOrderModal';
 
 /** Screen for instrument list */
 const InstrumentsScreen: React.FC = () => {

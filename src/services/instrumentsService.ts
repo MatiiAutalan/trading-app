@@ -1,5 +1,5 @@
-import apiClient from '../api/axiosInstance';
-import { Instrument } from '../types/instruments';
+import { apiClient } from '@api';
+import { Instrument } from '@types';
 
 export const getInstruments = async () => {
   const url = '/instruments';

@@ -1,10 +1,9 @@
 import { FlatList, View } from 'react-native';
-import { getAssets } from '../../services/portfolioService';
 import { useEffect, useState } from 'react';
-import { Asset } from '../../types/assets';
-import AssetsItem from '../../components/AssetItem/AssetItem';
+import { getAssets } from '@services';
+import { Asset } from '@types';
+import { AssetItem, Loader } from '@components';
 import styles from './PortfolioStyles';
-import Loader from '../../components/Loader/Loader';
 
 /** Screen for portfolio list */
 const PortfolioScreen: React.FC = () => {
@@ -35,7 +34,7 @@ const PortfolioScreen: React.FC = () => {
       <FlatList
         data={portfolioList}
         keyExtractor={(_, index) => index.toString()}
-        renderItem={({ item }) => <AssetsItem item={item} />}
+        renderItem={({ item }) => <AssetItem item={item} />}
       />
     </View>
   );

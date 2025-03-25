@@ -1,7 +1,7 @@
 import React from 'react';
 import { View, Text, TouchableOpacity, StyleSheet } from 'react-native';
-import { Instrument } from '../../types/instruments';
-import { calculateReturn } from '../../utils/calculateReturn';
+import { Instrument } from '@types';
+import { calculateReturn } from '@utils';
 import styles from './InstrumentItemStyles';
 
 /**

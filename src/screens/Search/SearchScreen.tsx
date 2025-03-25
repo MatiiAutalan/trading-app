@@ -1,14 +1,12 @@
 import { useEffect, useState } from 'react';
 import { FlatList, View, Text, TextInput } from 'react-native';
-import { searchAssets } from '../../services/searchAssets';
-import { Instrument } from '../../types/instruments';
-
+import { searchAssets } from '@services';
+import { Instrument } from '@types';
+import { InstrumentItem, Loader, OrderModal } from '@components';
+import { useOrderModal } from '@hooks';
 import styles from './SearchScreenStyles';
-import InstrumentItem from '../../components/InstrumentItem/InstrumentItem';
-import Loader from '../../components/Loader/Loader';
-import useOrderModal from '../../hooks/useOrderModal';
-import OrderModal from '../../components/CreateOrderModal/CreateOrderModal';
 
+/** Search screen instruments */
 const SearchScreen: React.FC = () => {
   const [searchQuery, setSearchQuery] = useState<string>('');
   const [searchResults, setSearchResults] = useState<Instrument[]>([]);

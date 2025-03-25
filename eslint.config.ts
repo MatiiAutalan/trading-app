@@ -34,4 +34,20 @@ module.exports = {
     'no-invalid-regexp': 'error',
     'no-undef': 'error',
   },
+  settings: {
+    'import/resolver': {
+      node: {
+        paths: ['src'],
+        alias: {
+          '@services': './src/services',
+          '@components': './src/components',
+          '@screens': './src/screens',
+          '@utils': './src/utils',
+          '@helpers': './src/helpers',
+          '@types': './src/types',
+          '@api': './src/api',
+        },
+      },
+    },
+  },
 };

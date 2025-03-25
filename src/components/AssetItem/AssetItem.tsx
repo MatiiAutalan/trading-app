@@ -1,8 +1,9 @@
-import { View, Text, TouchableOpacity } from 'react-native';
+import { View, Text } from 'react-native';
 import { useMemo } from 'react';
-import { Asset } from '../../types/assets';
+import { Asset } from '@types';
 import styles from './AssetItemStyles';
 
+/** Assets item component */
 const AssetsItem = ({ item }: { item: Asset }) => {
   const { ticker, quantity, last_price, avg_cost_price } = item;
 

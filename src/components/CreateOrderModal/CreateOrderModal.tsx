@@ -6,8 +6,8 @@ import {
   TouchableOpacity,
   TouchableWithoutFeedback,
 } from 'react-native';
+import { Input, InputConfig } from '@components';
 import styles from './CreateOrderModalStyles';
-import CustomInput, { InputConfig } from '../CustomInput/CustomInput';
 
 type OrderModalProps = {
   visible: boolean;
@@ -52,7 +52,7 @@ const OrderModal = ({
             <View style={styles.modalContent}>
               <Text style={styles.modalTitle}>{title}</Text>
               {inputs.map((input) => (
-                <CustomInput
+                <Input
                   key={input.key}
                   type={input.type}
                   label={input.label}

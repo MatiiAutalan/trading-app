@@ -1,6 +1,6 @@
 import React from 'react';
 import { View, Text, TextInput, Switch } from 'react-native';
-import CustomSelect from '../CustomSelect/CustomSelect';
+import { Select } from '@components';
 import styles from './CustomInputStyles';
 
 type InputType = 'text' | 'number' | 'select' | 'toggle';
@@ -40,7 +40,7 @@ const CustomInput = ({
         );
       case 'select':
         return (
-          <CustomSelect
+          <Select
             options={options || []}
             selectedValue={value || ''}
             onValueChange={onChange}

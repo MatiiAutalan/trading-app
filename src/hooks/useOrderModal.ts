@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { Alert } from 'react-native';
-import { createOrder, OrderData } from '../services/createOrder';
-import { InputConfig } from '../components/CustomInput/CustomInput';
+import { createOrder, OrderData } from '@services';
+import { InputConfig } from '@components';
 
 const useOrderModal = () => {
   const [selectedInstrumentId, setSelectedInstrumentId] = useState<
