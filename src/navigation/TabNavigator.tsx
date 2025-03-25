@@ -53,14 +53,14 @@ export const MainTabNavigator = () => {
         options={{ title: 'Mercado' }}
       />
       <Tab.Screen
-        name="Portafolio"
-        component={PortfolioScreen}
-        options={{ title: 'Portafolio' }}
-      />
-      <Tab.Screen
         name="Busqueda"
         component={SearchScreen}
         options={{ title: 'Buscar' }}
+      />
+      <Tab.Screen
+        name="Portafolio"
+        component={PortfolioScreen}
+        options={{ title: 'Portafolio' }}
       />
     </Tab.Navigator>
   );
