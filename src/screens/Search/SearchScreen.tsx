@@ -6,6 +6,8 @@ import { Instrument } from '../../types/instruments';
 import styles from './SearchScreenStyles';
 import InstrumentItem from '../../components/InstrumentItem/InstrumentItem';
 import Loader from '../../components/Loader/Loader';
+import useOrderModal from '../../hooks/useOrderModal';
+import OrderModal from '../../components/CreateOrderModal/CreateOrderModal';
 
 const SearchScreen: React.FC = () => {
   const [searchQuery, setSearchQuery] = useState<string>('');
@@ -38,6 +40,14 @@ const SearchScreen: React.FC = () => {
     return () => clearTimeout(handler);
   }, [searchQuery]);
 
+  const {
+    modalVisible,
+    setModalVisible,
+    orderInputs,
+    handleInstrumentPress,
+    handleSubmitOrder,
+  } = useOrderModal();
+
   return (
     <View style={styles.container}>
       <TextInput
@@ -55,7 +65,10 @@ const SearchScreen: React.FC = () => {
           data={searchResults}
           keyExtractor={(item) => item.id.toString()}
           renderItem={({ item }) => (
-            <InstrumentItem item={item} disabled={true} />
+            <InstrumentItem
+              item={item}
+              onPress={() => handleInstrumentPress(item.id)}
+            />
           )}
           ListEmptyComponent={
             searchQuery.length > 0 && !loadingSearch ? (
@@ -64,8 +77,17 @@ const SearchScreen: React.FC = () => {
           }
         />
       )}
-
       {searchError && <Text style={styles.errorText}>{searchError}</Text>}
+
+      <OrderModal
+        visible={modalVisible}
+        onClose={() => setModalVisible(false)}
+        onSubmit={handleSubmitOrder}
+        inputs={orderInputs}
+        title="Nueva Orden"
+        buttonConfirmText="Enviar Orden"
+        buttonCancelText="Cancelar"
+      />
     </View>
   );
 };
