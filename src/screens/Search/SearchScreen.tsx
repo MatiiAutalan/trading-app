@@ -30,8 +30,6 @@ const SearchScreen: React.FC = () => {
           setSearchError(
             error?.response?.data?.error || 'Error en la búsqueda',
           );
-          //TODO ADD SCREEN / MESSAGE ERROR.
-          console.error('Search error:', error);
         } finally {
           setLoadingSearch(false);
         }
@@ -79,7 +77,9 @@ const SearchScreen: React.FC = () => {
           )}
           ListEmptyComponent={
             searchQuery.length > 0 && !loadingSearch ? (
-              <Text style={styles.emptyText}>No se encontraron resultados</Text>
+              <Text style={styles.emptyText}>
+                {'No se encontraron resultados'}
+              </Text>
             ) : null
           }
         />

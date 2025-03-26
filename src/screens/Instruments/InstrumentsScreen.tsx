@@ -15,6 +15,7 @@ import styles from './InstrumentsStyles';
 const InstrumentsScreen: React.FC = () => {
   const [instrumentsList, setInstrumentsList] = useState<Instrument[]>([]);
   const [loadingInstruments, setLoadingInstruments] = useState<boolean>(false);
+  const [errorInstruments, setErrorInstruments] = useState<boolean>(false);
 
   const {
     modalVisible,
@@ -37,7 +38,7 @@ const InstrumentsScreen: React.FC = () => {
       } catch (error: any) {
         if (error) {
           console.error(error?.response?.data.error);
-          //TODO ADD SCREEN / MESSAGE ERROR
+          setErrorInstruments(true);
         }
       } finally {
         setLoadingInstruments(false);
@@ -51,6 +52,14 @@ const InstrumentsScreen: React.FC = () => {
   ) : (
     <View style={styles.container}>
       <Text style={styles.title}>{'Listado de activos'}</Text>
+      {errorInstruments && (
+        <View style={styles.errorContainer}>
+          <Text style={styles.iconError}>👎🏽</Text>
+          <Text style={styles.textError}>
+            {'Ocurrio un error al cargar los activos'}
+          </Text>
+        </View>
+      )}
       <FlatList
         data={instrumentsList}
         keyExtractor={(item) => item.id.toString()}
