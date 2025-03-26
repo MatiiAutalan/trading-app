@@ -1,13 +1,16 @@
-import React, { useState } from 'react';
+import React from 'react';
 import {
   Modal,
   View,
   Text,
   TouchableOpacity,
   TouchableWithoutFeedback,
+  Keyboard,
 } from 'react-native';
-import { Input, InputConfig } from '@components';
+import { Formik, FormikErrors } from 'formik';
+import CustomInput, { InputConfig } from '../CustomInput/CustomInput';
 import styles from './CreateOrderModalStyles';
+import { createValidationSchema } from './CreateOrderModalValidations';
 
 type OrderModalProps = {
   visible: boolean;
@@ -28,16 +31,17 @@ const OrderModal = ({
   buttonConfirmText,
   buttonCancelText,
 }: OrderModalProps) => {
-  const [formData, setFormData] = useState<Record<string, any>>({});
+  const initialValues = inputs.reduce(
+    (acc, input) => {
+      acc[input.key] = input.defaultValue || '';
+      return acc;
+    },
+    {} as Record<string, any>,
+  );
 
-  const handleInputChange = (key: string, value: any) => {
-    setFormData((prev) => ({ ...prev, [key]: value }));
-  };
+  type FormikError = string | string[] | FormikErrors<any> | undefined;
 
-  const handleSubmit = () => {
-    onSubmit(formData);
-    onClose();
-  };
+  const validationSchema = createValidationSchema(inputs);
 
   return (
     <Modal
@@ -48,34 +52,59 @@ const OrderModal = ({
     >
       <TouchableWithoutFeedback onPress={onClose}>
         <View style={styles.modalOverlay}>
-          <TouchableWithoutFeedback>
+          <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
             <View style={styles.modalContent}>
               <Text style={styles.modalTitle}>{title}</Text>
-              {inputs.map((input) => (
-                <Input
-                  key={input.key}
-                  type={input.type}
-                  label={input.label}
-                  options={input.options}
-                  value={formData[input.key] || input.defaultValue || ''}
-                  onChange={(value) => handleInputChange(input.key, value)}
-                />
-              ))}
-              <View style={styles.buttonContainer}>
-                <TouchableOpacity style={styles.cancelButton} onPress={onClose}>
-                  <Text style={styles.buttonCancelText}>
-                    {buttonCancelText}
-                  </Text>
-                </TouchableOpacity>
-                <TouchableOpacity
-                  style={styles.submitButton}
-                  onPress={handleSubmit}
-                >
-                  <Text style={styles.buttonConfirmText}>
-                    {buttonConfirmText}
-                  </Text>
-                </TouchableOpacity>
-              </View>
+              <Formik
+                initialValues={initialValues}
+                validationSchema={validationSchema}
+                onSubmit={(values) => {
+                  onSubmit(values);
+                }}
+              >
+                {({ handleChange, handleSubmit, values, errors }) => (
+                  <>
+                    {inputs.map((input) => {
+                      const error = errors[input.key] as FormikError;
+                      return (
+                        <View key={input.key} style={styles.inputWrapper}>
+                          <CustomInput
+                            type={input.type}
+                            label={input.label}
+                            options={input.options}
+                            value={values[input.key]}
+                            onChange={handleChange(input.key)}
+                            key={input.key}
+                          />
+                          {typeof error === 'string' && (
+                            <Text style={styles.errorText}>{error}</Text>
+                          )}
+                        </View>
+                      );
+                    })}
+                    <View style={styles.buttonContainer}>
+                      <TouchableOpacity
+                        style={styles.cancelButton}
+                        onPress={onClose}
+                      >
+                        <Text style={styles.buttonCancelText}>
+                          {buttonCancelText}
+                        </Text>
+                      </TouchableOpacity>
+                      <TouchableOpacity
+                        style={styles.submitButton}
+                        onPress={() => {
+                          handleSubmit();
+                        }}
+                      >
+                        <Text style={styles.buttonConfirmText}>
+                          {buttonConfirmText}
+                        </Text>
+                      </TouchableOpacity>
+                    </View>
+                  </>
+                )}
+              </Formik>
             </View>
           </TouchableWithoutFeedback>
         </View>

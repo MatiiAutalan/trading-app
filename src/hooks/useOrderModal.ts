@@ -15,18 +15,18 @@ const useOrderModal = () => {
       label: 'Tipo de Operación',
       key: 'side',
       options: ['BUY', 'SELL'],
-      defaultValue: 'BUY',
+      defaultValue: '',
     },
     {
       type: 'select',
       label: 'Tipo de Orden',
       key: 'type',
       options: ['MARKET', 'LIMIT'],
-      defaultValue: 'MARKET',
+      defaultValue: '',
     },
     {
       type: 'number',
-      label: 'Cantidad',
+      label: 'Cantidad de acciones',
       key: 'quantity',
       defaultValue: '',
     },
@@ -51,7 +51,7 @@ const useOrderModal = () => {
       side: data.side as 'BUY' | 'SELL',
       type: data.type as 'MARKET' | 'LIMIT',
       quantity: parseInt(data.quantity, 10),
-      ...(data.type === 'LIMIT' && { price: parseFloat(data.price) }),
+      ...(data.price && { price: parseFloat(data.price.replace(',', '.')) }),
     };
 
     try {

@@ -3,15 +3,15 @@ import { StyleSheet } from 'react-native';
 const styles = StyleSheet.create({
   modalOverlay: {
     flex: 1,
+    backgroundColor: 'rgba(0, 0, 0, 0.5)',
     justifyContent: 'center',
     alignItems: 'center',
-    backgroundColor: 'rgba(0, 0, 0, 0.5)',
   },
   modalContent: {
-    width: '90%',
     backgroundColor: '#FFFFFF',
     borderRadius: 12,
     padding: 20,
+    width: '80%',
   },
   modalTitle: {
     fontSize: 20,
@@ -20,26 +20,8 @@ const styles = StyleSheet.create({
     marginBottom: 20,
     textAlign: 'center',
   },
-  inputGroup: {
-    marginBottom: 16,
-  },
-  label: {
-    fontSize: 14,
-    color: '#666666',
-    marginBottom: 8,
-  },
-  input: {
-    borderWidth: 1,
-    borderColor: '#E0E0E0',
-    borderRadius: 8,
-    padding: 12,
-    fontSize: 14,
-    color: '#1A1A1A',
-  },
-  picker: {
-    borderWidth: 1,
-    borderColor: '#E0E0E0',
-    borderRadius: 8,
+  inputContainer: {
+    marginBottom: 15,
   },
   buttonContainer: {
     flexDirection: 'row',
@@ -73,6 +55,18 @@ const styles = StyleSheet.create({
     fontSize: 14,
     fontWeight: '500',
     color: '#fff',
+  },
+  inputWrapper: {
+    marginBottom: 10,
+    position: 'relative',
+  },
+  errorText: {
+    position: 'absolute',
+    bottom: -4,
+    left: 0,
+    right: 0,
+    color: 'red',
+    fontSize: 12,
   },
 });
 
