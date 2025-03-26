@@ -2,7 +2,12 @@ import React, { useEffect, useState } from 'react';
 import { View, Text, FlatList } from 'react-native';
 import { getInstruments } from '@services';
 import { Instrument } from '@types';
-import { InstrumentItem, OrderModal, Loader } from '@components';
+import {
+  InstrumentItem,
+  OrderModal,
+  Loader,
+  CustomSnackbar,
+} from '@components';
 import { useOrderModal } from '@hooks';
 import styles from './InstrumentsStyles';
 
@@ -17,6 +22,10 @@ const InstrumentsScreen: React.FC = () => {
     orderInputs,
     handleInstrumentPress,
     handleSubmitOrder,
+    snackbarVisible,
+    snackbarMessage,
+    snackbarColor,
+    hideSnackbar,
   } = useOrderModal();
 
   useEffect(() => {
@@ -61,6 +70,12 @@ const InstrumentsScreen: React.FC = () => {
         title="Nueva Orden"
         buttonConfirmText="Enviar Orden"
         buttonCancelText="Cancelar"
+      />
+      <CustomSnackbar
+        visible={snackbarVisible}
+        message={snackbarMessage}
+        onDismiss={hideSnackbar}
+        backgroundColor={snackbarColor}
       />
     </View>
   );

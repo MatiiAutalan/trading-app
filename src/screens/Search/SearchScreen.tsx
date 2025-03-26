@@ -2,7 +2,12 @@ import { useEffect, useState } from 'react';
 import { FlatList, View, Text, TextInput } from 'react-native';
 import { searchAssets } from '@services';
 import { Instrument } from '@types';
-import { InstrumentItem, Loader, OrderModal } from '@components';
+import {
+  CustomSnackbar,
+  InstrumentItem,
+  Loader,
+  OrderModal,
+} from '@components';
 import { useOrderModal } from '@hooks';
 import styles from './SearchScreenStyles';
 
@@ -44,6 +49,10 @@ const SearchScreen: React.FC = () => {
     orderInputs,
     handleInstrumentPress,
     handleSubmitOrder,
+    snackbarVisible,
+    snackbarMessage,
+    snackbarColor,
+    hideSnackbar,
   } = useOrderModal();
 
   return (
@@ -85,6 +94,12 @@ const SearchScreen: React.FC = () => {
         title="Nueva Orden"
         buttonConfirmText="Enviar Orden"
         buttonCancelText="Cancelar"
+      />
+      <CustomSnackbar
+        visible={snackbarVisible}
+        message={snackbarMessage}
+        onDismiss={hideSnackbar}
+        backgroundColor={snackbarColor}
       />
     </View>
   );

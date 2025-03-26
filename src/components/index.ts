@@ -4,3 +4,4 @@ export { default as Select } from './CustomSelect/CustomSelect';
 export { default as InstrumentItem } from './InstrumentItem/InstrumentItem';
 export { default as Loader } from './Loader/Loader';
 export { default as OrderModal } from './CreateOrderModal/CreateOrderModal';
+export { default as CustomSnackbar } from './Snackbar/Snackbar';
