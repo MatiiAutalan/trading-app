@@ -1,43 +1,23 @@
 import { useEffect, useState } from 'react';
 import { FlatList, View, Text, TextInput } from 'react-native';
-import { searchAssets } from '@services';
-import { Instrument } from '@types';
+import { useStore } from '../../store/useStore';
 import {
   CustomSnackbar,
   InstrumentItem,
   Loader,
   OrderModal,
 } from '@components';
-import { useOrderModal } from '@hooks';
 import styles from './SearchScreenStyles';
+import { useOrderModal } from '@hooks';
 
-/** Search screen instruments */
 const SearchScreen: React.FC = () => {
   const [searchQuery, setSearchQuery] = useState<string>('');
-  const [searchResults, setSearchResults] = useState<Instrument[]>([]);
-  const [loadingSearch, setLoadingSearch] = useState<boolean>(false);
-  const [searchError, setSearchError] = useState<string | null>(null);
+  const { searchResults, loading, error, searchForInstrument } = useStore();
 
   useEffect(() => {
-    const handler = setTimeout(async () => {
-      if (searchQuery.trim().length > 0) {
-        try {
-          setLoadingSearch(true);
-          setSearchError(null);
-          const results = await searchAssets(searchQuery.toUpperCase());
-          setSearchResults(results);
-        } catch (error: any) {
-          setSearchError(
-            error?.response?.data?.error || 'Error en la búsqueda',
-          );
-        } finally {
-          setLoadingSearch(false);
-        }
-      } else {
-        setSearchResults([]);
-      }
+    const handler = setTimeout(() => {
+      searchForInstrument(searchQuery);
     }, 100);
-
     return () => clearTimeout(handler);
   }, [searchQuery]);
 
@@ -62,8 +42,13 @@ const SearchScreen: React.FC = () => {
         onChangeText={setSearchQuery}
         autoCapitalize="none"
       />
-
-      {loadingSearch ? (
+      {error && (
+        <View style={styles.errorContainer}>
+          <Text style={styles.iconError}>🔌</Text>
+          <Text style={styles.textError}>{error}</Text>
+        </View>
+      )}
+      {loading ? (
         <Loader />
       ) : (
         <FlatList
@@ -76,7 +61,7 @@ const SearchScreen: React.FC = () => {
             />
           )}
           ListEmptyComponent={
-            searchQuery.length > 0 && !loadingSearch ? (
+            searchQuery.length > 0 && !loading ? (
               <Text style={styles.emptyText}>
                 {'No se encontraron resultados'}
               </Text>
@@ -84,7 +69,6 @@ const SearchScreen: React.FC = () => {
           }
         />
       )}
-      {searchError && <Text style={styles.errorText}>{searchError}</Text>}
 
       <OrderModal
         visible={modalVisible}

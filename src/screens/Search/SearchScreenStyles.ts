@@ -40,6 +40,9 @@ const styles = StyleSheet.create({
     fontSize: 14,
     fontWeight: '500',
   },
+  errorContainer: { flex: 1, justifyContent: 'center', alignItems: 'center' },
+  iconError: { fontSize: 60 },
+  textError: { fontSize: 24, textAlign: 'center', fontWeight: 'bold' },
 });
 
 export default styles;

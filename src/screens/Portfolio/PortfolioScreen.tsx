@@ -1,48 +1,29 @@
 import { FlatList, View, Text } from 'react-native';
-import { useEffect, useState } from 'react';
-import { getAssets } from '@services';
-import { Asset } from '@types';
+import { useEffect } from 'react';
+import { useStore } from '../../store/useStore';
 import { AssetItem, Loader } from '@components';
 import styles from './PortfolioStyles';
 
-/** Screen for portfolio list */
 const PortfolioScreen: React.FC = () => {
-  const [portfolioList, setPortfolioList] = useState<Asset[]>([]);
-  const [loadingPortfolio, setLoadingPortfolio] = useState<boolean>(false);
-  const [errorPortfolio, setErrorPortfolio] = useState<boolean>(false);
+  const { portfolio, loading, error, fetchPortfolio } = useStore();
+
   useEffect(() => {
-    const getPortfolioList = async () => {
-      setLoadingPortfolio(true);
-      try {
-        const data = await getAssets();
-        data && setPortfolioList(data);
-      } catch (error: any) {
-        if (error) {
-          console.error(error?.response?.data.error);
-          setErrorPortfolio(true);
-        }
-      } finally {
-        setLoadingPortfolio(false);
-      }
-    };
-    getPortfolioList();
+    fetchPortfolio();
   }, []);
 
-  return loadingPortfolio ? (
+  return loading ? (
     <Loader />
   ) : (
     <View style={styles.container}>
-      {errorPortfolio && (
+      {error && (
         <View style={styles.errorContainer}>
           <Text style={styles.iconError}>👎🏽</Text>
-          <Text style={styles.textError}>
-            {'Ocurrio un error al cargar los activos'}
-          </Text>
+          <Text style={styles.textError}>{error}</Text>
         </View>
       )}
       <FlatList
-        data={portfolioList}
-        keyExtractor={(_, index) => index.toString()}
+        data={portfolio}
+        keyExtractor={(item, index) => index.toString()}
         renderItem={({ item }) => <AssetItem item={item} />}
       />
     </View>
