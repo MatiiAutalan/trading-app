@@ -19,7 +19,9 @@
       "@api": ["api"],
       "@api/*": ["api/*"],
       "@styles": ["assets/styles"],
-      "@styles/*": ["assets/styles/*"]
+      "@styles/*": ["assets/styles/*"],
+      "@store": ["store"],
+      "@store/*": ["store/*"]
     }
   }
 }

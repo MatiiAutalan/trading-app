@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import { FlatList, View, Text, TextInput } from 'react-native';
-import { useStore } from '../../store/useStore';
+import { useStore } from '@store';
 import {
   CustomSnackbar,
   InstrumentItem,
