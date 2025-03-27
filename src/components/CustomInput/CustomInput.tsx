@@ -18,6 +18,7 @@ type CustomInputProps = InputConfig & {
   onChange: (value: any) => void;
 };
 
+/** Custom input  */
 const CustomInput = ({
   type,
   label,

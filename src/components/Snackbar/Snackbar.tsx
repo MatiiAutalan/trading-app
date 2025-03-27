@@ -12,6 +12,7 @@ interface CustomSnackbarProps {
   duration?: number;
 }
 
+/** Custom snackbar to indicates messages */
 const CustomSnackbar: React.FC<CustomSnackbarProps> = ({
   visible,
   message,

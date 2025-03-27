@@ -22,6 +22,7 @@ type OrderModalProps = {
   buttonCancelText: string;
 };
 
+/** Order modal component to create order */
 const OrderModal = ({
   visible,
   onClose,

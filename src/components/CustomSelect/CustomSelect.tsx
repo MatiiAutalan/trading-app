@@ -15,6 +15,7 @@ interface CustomSelectProps {
   placeholder?: string;
 }
 
+/** Custom select with dropdown */
 const CustomSelect = ({
   options,
   selectedValue,
