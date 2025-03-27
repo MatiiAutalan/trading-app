@@ -1,6 +1,6 @@
 import React from 'react';
 import { View, Text, TextInput, Switch } from 'react-native';
-import { Select } from '@components';
+import Select from '../CustomSelect/CustomSelect';
 import styles from './CustomInputStyles';
 
 type InputType = 'text' | 'number' | 'select' | 'toggle';
