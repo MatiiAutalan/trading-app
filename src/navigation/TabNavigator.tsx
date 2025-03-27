@@ -3,6 +3,7 @@ import { Ionicons } from '@expo/vector-icons';
 import { InstrumentsScreen } from '@screens';
 import { PortfolioScreen } from '@screens';
 import { SearchScreen } from '@screens';
+import { Colors } from '@styles';
 
 const Tab = createBottomTabNavigator();
 
@@ -28,10 +29,10 @@ export const MainTabNavigator = () => {
           return <Ionicons name={iconName} size={size} color={color} />;
         },
         tabBarLabelStyle: { fontSize: 12 },
-        tabBarActiveTintColor: '#4A148C',
-        tabBarInactiveTintColor: '#8E8E93',
+        tabBarActiveTintColor: Colors.brandDefault,
+        tabBarInactiveTintColor: Colors.gray,
         tabBarStyle: {
-          backgroundColor: '#FFFFFF',
+          backgroundColor: Colors.backgroundWithe,
           height: 70,
           paddingTop: 8,
           marginBottom: 25,
@@ -39,7 +40,7 @@ export const MainTabNavigator = () => {
           flexDirection: 'row',
           borderRadius: 15,
           alignSelf: 'center',
-          shadowColor: '#4A148C',
+          shadowColor: Colors.brandDefault,
           shadowOpacity: 0.3,
           shadowOffset: { height: 0, width: -4 },
           shadowRadius: 16,

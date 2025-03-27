@@ -1,14 +1,15 @@
+import { Colors } from '@styles';
 import { StyleSheet } from 'react-native';
 
 const styles = StyleSheet.create({
   modalOverlay: {
     flex: 1,
-    backgroundColor: 'rgba(0, 0, 0, 0.5)',
+    backgroundColor: Colors.backdrop,
     justifyContent: 'center',
     alignItems: 'center',
   },
   modalContent: {
-    backgroundColor: '#FFFFFF',
+    backgroundColor: Colors.backgroundWithe,
     borderRadius: 12,
     padding: 20,
     width: '80%',
@@ -30,17 +31,17 @@ const styles = StyleSheet.create({
   },
   cancelButton: {
     flex: 1,
-    backgroundColor: '#fff',
+    backgroundColor: Colors.backgroundWithe,
     borderRadius: 8,
     borderWidth: 2,
-    borderColor: '#4A148C',
+    borderColor: Colors.brandDefault,
     padding: 12,
     marginRight: 8,
     alignItems: 'center',
   },
   submitButton: {
     flex: 1,
-    backgroundColor: '#4A148C',
+    backgroundColor: Colors.brandDefault,
     borderRadius: 8,
     padding: 12,
     marginLeft: 8,
@@ -49,12 +50,12 @@ const styles = StyleSheet.create({
   buttonCancelText: {
     fontSize: 14,
     fontWeight: '500',
-    color: '#4A148C',
+    color: Colors.brandDefault,
   },
   buttonConfirmText: {
     fontSize: 14,
     fontWeight: '500',
-    color: '#fff',
+    color: Colors.backgroundWithe,
   },
   inputWrapper: {
     marginBottom: 10,

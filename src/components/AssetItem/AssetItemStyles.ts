@@ -1,8 +1,9 @@
 import { StyleSheet } from 'react-native';
+import { Colors } from '@styles';
 
 export default StyleSheet.create({
   card: {
-    backgroundColor: '#FFFFFF',
+    backgroundColor: Colors.backgroundWithe,
     borderRadius: 12,
     padding: 16,
     marginVertical: 8,
@@ -19,7 +20,7 @@ export default StyleSheet.create({
     alignItems: 'center',
     marginBottom: 8,
     borderBottomWidth: 1,
-    borderBottomColor: '#666666',
+    borderBottomColor: Colors.gray,
     paddingBottom: 4,
   },
   ticker: {
@@ -29,7 +30,7 @@ export default StyleSheet.create({
   },
   shares: {
     fontSize: 14,
-    color: '#666666',
+    color: Colors.gray,
     fontWeight: '500',
   },
   details: {
@@ -48,7 +49,7 @@ export default StyleSheet.create({
   value: {
     fontSize: 14,
     fontWeight: '500',
-    color: '#1A1A1A',
+    color: Colors.blackLight,
     flex: 1,
     textAlign: 'right',
   },
@@ -59,9 +60,9 @@ export default StyleSheet.create({
     flex: 1,
   },
   profit: {
-    color: '#34C759', // Verde para ganancias
+    color: Colors.green,
   },
   loss: {
-    color: '#FF3B30', // Rojo para pérdidas
+    color: Colors.red,
   },
 });

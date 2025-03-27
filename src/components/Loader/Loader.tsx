@@ -2,6 +2,7 @@ import React from 'react';
 import { ActivityIndicator, StyleProp, View, ViewStyle } from 'react-native';
 
 import styles from './LoaderStyles';
+import { Colors } from '@styles';
 
 interface LoaderProps {
   style?: StyleProp<ViewStyle>;
@@ -13,7 +14,7 @@ interface LoaderProps {
  */
 const Loader: React.FC<LoaderProps> = ({
   style,
-  color = '#4A148C',
+  color = Colors.brandDefault,
   size = 'large',
 }) => {
   return (

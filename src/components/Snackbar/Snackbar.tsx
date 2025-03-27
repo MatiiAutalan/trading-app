@@ -2,6 +2,7 @@ import React from 'react';
 import { View } from 'react-native';
 import { Snackbar } from 'react-native-paper';
 import styles from './SnackbarStyles';
+import { Colors } from '@styles';
 
 interface CustomSnackbarProps {
   visible: boolean;
@@ -15,7 +16,7 @@ const CustomSnackbar: React.FC<CustomSnackbarProps> = ({
   visible,
   message,
   onDismiss,
-  backgroundColor = '#333',
+  backgroundColor = Colors.blackLight,
   duration = 3000,
 }) => {
   return (

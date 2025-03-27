@@ -1,3 +1,4 @@
+import { Colors } from '@styles';
 import { StyleSheet } from 'react-native';
 
 const styles = StyleSheet.create({
@@ -13,18 +14,18 @@ const styles = StyleSheet.create({
   },
   input: {
     borderWidth: 1,
-    borderColor: '#ccc',
+    borderColor: Colors.gray,
     borderRadius: 8,
     padding: 12,
     fontSize: 16,
-    backgroundColor: '#fff',
+    backgroundColor: Colors.backgroundWithe,
     width: '100%',
   },
   picker: {
     borderWidth: 1,
-    borderColor: '#ccc',
+    borderColor: Colors.gray,
     borderRadius: 8,
-    backgroundColor: '#fff',
+    backgroundColor: Colors.backgroundWithe,
     width: '100%',
   },
   switchContainer: {

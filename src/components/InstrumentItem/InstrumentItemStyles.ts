@@ -1,3 +1,4 @@
+import { Colors } from '@styles';
 import { StyleSheet } from 'react-native';
 
 const styles = StyleSheet.create({
@@ -5,7 +6,7 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     justifyContent: 'space-between',
     alignItems: 'center',
-    backgroundColor: '#FFFFFF',
+    backgroundColor: Colors.backgroundWithe,
     borderRadius: 12,
     padding: 16,
     marginVertical: 8,
@@ -25,7 +26,7 @@ const styles = StyleSheet.create({
   },
   ticker: {
     fontSize: 14,
-    color: '#666666',
+    color: Colors.gray,
   },
   name: {
     fontSize: 16,
@@ -53,10 +54,10 @@ const styles = StyleSheet.create({
     fontWeight: '500',
   },
   profit: {
-    color: '#34C759',
+    color: Colors.green,
   },
   loss: {
-    color: '#FF3B30',
+    color: Colors.red,
   },
   performanceBar: {
     position: 'absolute',

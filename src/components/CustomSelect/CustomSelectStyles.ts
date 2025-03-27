@@ -1,3 +1,4 @@
+import { Colors } from '@styles';
 import { StyleSheet } from 'react-native';
 
 const styles = StyleSheet.create({
@@ -6,7 +7,7 @@ const styles = StyleSheet.create({
   },
   selectTrigger: {
     borderWidth: 1,
-    borderColor: '#ccc',
+    borderColor: Colors.gray,
     borderRadius: 8,
     padding: 12,
     flexDirection: 'row',
@@ -22,7 +23,7 @@ const styles = StyleSheet.create({
   },
   placeholderText: {
     fontSize: 16,
-    color: '#999',
+    color: Colors.gray,
     flex: 1,
   },
   dropdownContainer: {
@@ -30,10 +31,10 @@ const styles = StyleSheet.create({
     backgroundColor: 'white',
     borderRadius: 8,
     borderWidth: 1,
-    borderColor: '#ccc',
+    borderColor: Colors.gray,
     maxHeight: 200,
     elevation: 4,
-    shadowColor: '#000',
+    shadowColor: Colors.blackLight,
     shadowOffset: { width: 0, height: 2 },
     shadowOpacity: 0.25,
     shadowRadius: 3.84,
@@ -49,14 +50,14 @@ const styles = StyleSheet.create({
     paddingHorizontal: 16,
     paddingVertical: 12,
     borderBottomWidth: 1,
-    borderBottomColor: '#f0f0f0',
+    borderBottomColor: Colors.backgroundWithe,
   },
   optionText: {
     fontSize: 16,
     color: '#333',
   },
   selectedOption: {
-    color: '#4A148C',
+    color: Colors.brandDefault,
     fontWeight: '600',
   },
   overlay: {

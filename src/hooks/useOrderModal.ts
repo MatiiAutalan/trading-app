@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { createOrder, OrderData } from '@services';
 import { InputConfig } from '@components';
+import { Colors } from '@styles';
 
 const useOrderModal = () => {
   const [selectedInstrumentId, setSelectedInstrumentId] = useState<
@@ -63,20 +64,20 @@ const useOrderModal = () => {
       const result = await createOrder(orderData);
       switch (result.status) {
         case 'FILLED':
-          showSnackbar(`Orden completada - ID: ${result.id}`, '#4CAF50');
+          showSnackbar(`Orden completada - ID: ${result.id}`, Colors.success);
           break;
         case 'REJECTED':
-          showSnackbar(`Orden rechazada - ID: ${result.id}`, '#F44336');
+          showSnackbar(`Orden rechazada - ID: ${result.id}`, Colors.rejected);
           break;
         case 'PENDING':
-          showSnackbar(`Orden pendiente - ID: ${result.id}`, '#FFC107');
+          showSnackbar(`Orden pendiente - ID: ${result.id}`, Colors.pending);
           break;
         default:
-          showSnackbar(`Orden enviada - ID: ${result.id}`, '#333');
+          showSnackbar(`Orden enviada - ID: ${result.id}`, Colors.blackLight);
           break;
       }
     } catch (error) {
-      showSnackbar('Error: No se pudo enviar la orden.', '#F44336');
+      showSnackbar('Error: No se pudo enviar la orden.', Colors.rejected);
     } finally {
       setModalVisible(false);
     }

@@ -46,6 +46,7 @@ module.exports = {
           '@helpers': './src/helpers',
           '@types': './src/types',
           '@api': './src/api',
+          '@styles': './src/assets/styles',
         },
       },
     },

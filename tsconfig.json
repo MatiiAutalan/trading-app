@@ -17,7 +17,9 @@
       "@hooks": ["hooks"],
       "@hooks/*": ["hooks/*"],
       "@api": ["api"],
-      "@api/*": ["api/*"]
+      "@api/*": ["api/*"],
+      "@styles": ["assets/styles"],
+      "@styles/*": ["assets/styles/*"]
     }
   }
 }
