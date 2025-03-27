@@ -1,13 +1,14 @@
 import React, { useEffect } from 'react';
-import { View, Text, FlatList } from 'react-native';
-import { useStore } from '../../store/useStore';
+import { View, Text, FlatList, RefreshControl } from 'react-native';
+import { useStore } from '@store';
 import {
   InstrumentItem,
   OrderModal,
   Loader,
   CustomSnackbar,
 } from '@components';
-import { useOrderModal } from '@hooks';
+import { Colors } from '@styles';
+import { useOrderModal, useRefresh } from '@hooks';
 import styles from './InstrumentsStyles';
 
 const InstrumentsScreen: React.FC = () => {
@@ -23,6 +24,7 @@ const InstrumentsScreen: React.FC = () => {
     snackbarColor,
     hideSnackbar,
   } = useOrderModal();
+  const { isRefreshing, handleRefresh } = useRefresh(fetchInstruments);
 
   useEffect(() => {
     fetchInstruments();
@@ -48,6 +50,14 @@ const InstrumentsScreen: React.FC = () => {
             onPress={() => handleInstrumentPress(item.id)}
           />
         )}
+        refreshControl={
+          <RefreshControl
+            refreshing={isRefreshing}
+            onRefresh={handleRefresh}
+            colors={[Colors.brandDefault]}
+            tintColor={Colors.brandDefault}
+          />
+        }
       />
 
       <OrderModal
