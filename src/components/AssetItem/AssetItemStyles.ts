@@ -1,7 +1,7 @@
 import { StyleSheet } from 'react-native';
 import { Colors } from '@styles';
 
-export default StyleSheet.create({
+const styles = StyleSheet.create({
   card: {
     backgroundColor: Colors.backgroundWithe,
     borderRadius: 12,
@@ -66,3 +66,5 @@ export default StyleSheet.create({
     color: Colors.red,
   },
 });
+
+export default styles;
