@@ -28,11 +28,25 @@ export const createValidationSchema = (inputs: InputConfig[]) => {
             break;
 
           case 'price':
-            fieldValidation = Yup.string().matches(
-              /^\d+([.,]\d*)?$/,
-              'Valor invalido',
+            fieldValidation = Yup.string().when(
+              'type',
+              (
+                values: any[],
+                schema: Yup.StringSchema<
+                  string | undefined,
+                  Yup.AnyObject,
+                  undefined
+                >,
+              ) => {
+                const type = values[0];
+                if (type === 'LIMIT') {
+                  return schema
+                    .required('El precio es obligatorio')
+                    .matches(/^\d+([.,]\d*)?$/, 'Valor inválido');
+                }
+                return schema;
+              },
             );
-
             break;
 
           default:

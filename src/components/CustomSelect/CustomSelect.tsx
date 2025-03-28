@@ -9,7 +9,10 @@ import {
 import styles from './CustomSelectStyles';
 
 interface CustomSelectProps {
-  options: string[];
+  options: {
+    key: string;
+    name: string;
+  }[];
   selectedValue: string;
   onValueChange: (value: string) => void;
   placeholder?: string;
@@ -38,10 +41,12 @@ const CustomSelect = ({
     });
   };
 
-  const handleSelect = (item: string) => {
-    onValueChange(item);
+  const handleSelect = (optionKey: string) => {
+    onValueChange(optionKey);
     setIsOpen(false);
   };
+
+  const selectedOption = options.find((option) => option.key === selectedValue);
 
   return (
     <View style={styles.container}>
@@ -52,9 +57,9 @@ const CustomSelect = ({
         activeOpacity={0.8}
       >
         <Text
-          style={selectedValue ? styles.selectedText : styles.placeholderText}
+          style={selectedOption ? styles.selectedText : styles.placeholderText}
         >
-          {selectedValue || placeholder}
+          {selectedOption ? selectedOption.name : placeholder}
         </Text>
       </TouchableOpacity>
 
@@ -74,20 +79,20 @@ const CustomSelect = ({
             style={styles.scrollContainer}
             contentContainerStyle={styles.scrollContent}
           >
-            {options.map((item) => (
+            {options.map((option) => (
               <TouchableOpacity
-                key={item}
+                key={option.key}
                 style={styles.optionItem}
-                onPress={() => handleSelect(item)}
+                onPress={() => handleSelect(option.key)}
                 activeOpacity={0.7}
               >
                 <Text
                   style={[
                     styles.optionText,
-                    item === selectedValue && styles.selectedOption,
+                    option.key === selectedValue && styles.selectedOption,
                   ]}
                 >
-                  {item}
+                  {option.name}
                 </Text>
               </TouchableOpacity>
             ))}

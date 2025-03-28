@@ -25,14 +25,20 @@ const useOrderModal = () => {
       type: 'select',
       label: 'Tipo de Operación',
       key: 'side',
-      options: ['BUY', 'SELL'],
+      options: [
+        { key: 'BUY', name: 'Compra' },
+        { key: 'SELL', name: 'Venta' },
+      ],
       defaultValue: '',
     },
     {
       type: 'select',
       label: 'Tipo de Orden',
       key: 'type',
-      options: ['MARKET', 'LIMIT'],
+      options: [
+        { key: 'MARKET', name: 'Mercado' },
+        { key: 'LIMIT', name: 'Limitada' },
+      ],
       defaultValue: '',
     },
     {
@@ -41,7 +47,12 @@ const useOrderModal = () => {
       key: 'quantity',
       defaultValue: '',
     },
-    { type: 'number', label: 'Precio', key: 'price', defaultValue: '' },
+    {
+      type: 'number',
+      label: 'Precio',
+      key: 'price',
+      defaultValue: '',
+    },
   ];
 
   const handleInstrumentPress = (instrumentId: number) => {

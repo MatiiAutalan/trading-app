@@ -18,7 +18,7 @@ const CustomSnackbar: React.FC<CustomSnackbarProps> = ({
   message,
   onDismiss,
   backgroundColor = Colors.blackLight,
-  duration = 3000,
+  duration = 4000,
 }) => {
   return (
     <View style={styles.container}>

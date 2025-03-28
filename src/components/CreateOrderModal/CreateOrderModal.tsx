@@ -67,6 +67,9 @@ const OrderModal = ({
                   <>
                     {inputs.map((input) => {
                       const error = errors[input.key] as FormikError;
+                      if (input.key === 'price' && values['type'] !== 'LIMIT') {
+                        return null;
+                      }
                       return (
                         <View key={input.key} style={styles.inputWrapper}>
                           <CustomInput
