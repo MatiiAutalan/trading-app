@@ -121,7 +121,7 @@ Durante el desarrollo de esta app, tomé algunas decisiones pensando en la simpl
 - **Linting y formato de código**: Configuré `eslint` y `prettier` para asegurarme de que el código se mantenga ordenado y sin errores innecesarios.
 - **Peticiones HTTP**: Usé `axios` para hacer requests a las APIs, porque su sintaxis es más amigable.
 - **Formularios y validaciones**: Implementé `formik` y `yup`, ya que juntos hacen que manejar formularios y validaciones sea mucho más fácil.
-- **Gestión del estado global**: Elegí usar `zustand` en lugar de `Redux` o `Context API`, ya que esta app es pequeña y `zustand` es ligero, fácil de configurar.
+- **Gestión del estado global**: Elegí usar `zustand` en lugar de `Redux` o `Context API`, ya que esta app es pequeña y `zustand` es ligero y fácil de configurar.
 - **Estructura del proyecto**: Organicé la app en carpetas para mantener un código limpio y fácil de escalar:
   - `api/`: Llamadas a servicios externos.
   - `assets/`: Imágenes y otros recursos estáticos.
